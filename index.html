@@ -6,6 +6,32 @@
   <title>For My Khepi ❤️</title>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
   <style>
+    #lockScreen {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, #ff9a9e, #fad0c4);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+#lockScreen input {
+    padding: 10px;
+    margin: 10px;
+    border-radius: 8px;
+    border: none;
+}
+
+#lockScreen button {
+    padding: 10px 20px;
+    background: #ff4d6d;
+    color: white;
+    border: none;
+    border-radius: 10px;
+}
     /* ============================
        RESET & ROOT VARIABLES
     ============================ */
@@ -819,6 +845,12 @@ button {
   </style>
 </head>
 <body>
+  <div id="lockScreen">
+    <h2>Enter Password 💖</h2>
+    <input type="password" id="passwordInput" placeholder="Enter password">
+    <button onclick="checkPassword()">Enter</button>
+    <p id="errorMsg"></p>
+</div>
 
   <!-- Floating hearts background -->
   <div id="hearts-bg"></div>
@@ -1016,6 +1048,17 @@ button {
        JAVASCRIPT
   ============================ -->
   <script>
+    function checkPassword() {
+    const correctPassword = "iloveyou"; // 🔐 CHANGE THIS
+    const userInput = document.getElementById("passwordInput").value;
+
+    if (userInput === correctPassword) {
+        document.getElementById("lockScreen").style.display = "none";
+        document.getElementById("mainContent").style.display = "block";
+    } else {
+        document.getElementById("errorMsg").innerText = "Wrong password 😢";
+    }
+}
     /* ========== FLOATING HEARTS ========== */
     const heartsContainer = document.getElementById('hearts-bg');
     const EMOJIS = ['♥', '❤', '💕', '💗', '💓', '💖', '💝'];
